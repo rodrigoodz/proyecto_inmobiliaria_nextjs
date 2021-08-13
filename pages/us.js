@@ -56,7 +56,7 @@ export default function Us() {
           </Box>
           <Button
             colorScheme="purple"
-            mt={50}
+            my={50}
             onClick={() => router.replace("/contact")}
           >
             Contactanos

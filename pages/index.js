@@ -55,7 +55,7 @@ export default function Home() {
         </SimpleGrid>
         <Button
           colorScheme="purple"
-          mt={50}
+          my={50}
           onClick={() => router.replace("/estates")}
         >
           Ver propiedades
