@@ -1,39 +1,53 @@
-import Image from "next/image";
-import { Box, Flex, HStack } from "@chakra-ui/react";
-import NavbarItem from "./NavbarItem";
-import { useRouter } from "next/router";
+import {
+  Box,
+  Flex,
+  HStack,
+  IconButton,
+  useDisclosure,
+  Stack,
+  Icon,
+} from "@chakra-ui/react";
+import { ImMenu, ImCross } from "react-icons/im";
+import Logo from "./Logo";
+import NavbarLinks from "./NavbarLinks";
 
 const Navbar = () => {
-  const router = useRouter();
-  const currentPath = router.pathname;
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <Box boxShadow="base">
+    <Box bg={"gray.100"} px={4} py={1} boxShadow="base">
       <Flex
-        height={20}
+        h={16}
+        alignItems={"center"}
+        justifyContent={"space-between"}
         maxW="5xl"
         margin="auto"
-        align="center"
-        justify="space-between"
-        px={6}
       >
-        <Box>
-          <Image
-            src="/assets/images/logo_text.png"
-            width={300}
-            height={70}
-            layout="intrinsic"
-            alt="logo without text"
-          />
-        </Box>
-        <HStack spacing={6}>
-          <NavbarItem text="Inicio" to="/" path={currentPath} />
-          <NavbarItem text="Nosotros" to="/us" path={currentPath} />
-          <NavbarItem text="Propiedades" to="/estates" path={currentPath} />
-          <NavbarItem text="Contacto" to="/contact" path={currentPath} />
-          <NavbarItem text="Tasación" to="/assessment" path={currentPath} />
-        </HStack>
+        <Flex
+          alignItems={"center"}
+          justifyContent={"space-between"}
+          width="full"
+        >
+          <Logo />
+          <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
+            <NavbarLinks />
+          </HStack>
+        </Flex>
+        <IconButton
+          size={"md"}
+          icon={isOpen ? <Icon as={ImCross} /> : <Icon as={ImMenu} />}
+          aria-label={"Abrir menu"}
+          display={{ md: "none" }}
+          onClick={isOpen ? onClose : onOpen}
+        />
       </Flex>
+      {isOpen ? (
+        <Box pb={4} display={{ md: "none" }}>
+          <Stack as={"nav"} spacing={4}>
+            <NavbarLinks />
+          </Stack>
+        </Box>
+      ) : null}
     </Box>
   );
 };
