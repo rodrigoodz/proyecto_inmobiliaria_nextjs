@@ -29,9 +29,9 @@ export default function Home() {
       </Head>
       <ContactInfo />
       <Navbar />
-      <Box maxW="5xl" margin="auto" p={5}>
+      <Box maxW="5xl" margin="auto">
         <Title text="Nuestros Servicios" />
-        <SimpleGrid columns={[1, 2, 4, 4]} spacing={5} p={50}>
+        <SimpleGrid columns={[1, 2, 4, 4]} spacing={5} px={50}>
           <Card
             title="Ventas"
             image="sale_illus"
