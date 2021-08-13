@@ -4,7 +4,7 @@ import React from "react";
 const Title = ({ text }) => {
   return (
     <Box p={10} textAlign="center">
-      <Heading as="h1" size="3xl" mb={4}>
+      <Heading as="h1" size="xl" mb={4}>
         {text}
       </Heading>
       <Divider
