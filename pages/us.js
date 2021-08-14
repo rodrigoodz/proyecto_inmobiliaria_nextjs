@@ -26,7 +26,7 @@ export default function Us() {
       <Box maxW="5xl" margin="auto">
         <Title text="Nosotros" />
         <Box px={50}>
-          <Box bg="white" boxShadow="xl" rounded="md" h="full">
+          <Box bg="white" boxShadow="xl" rounded="md" h="full" p={6}>
             <Image
               src="/assets/images/logo.png"
               width={200}
