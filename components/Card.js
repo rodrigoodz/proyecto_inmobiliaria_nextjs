@@ -22,6 +22,7 @@ const Card = ({
         backgroundColor: "#f3f3f3",
       }}
       align="center"
+      height="full"
       justifyContent="space-between"
     >
       <VStack>
