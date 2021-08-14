@@ -35,21 +35,25 @@ export default function Home() {
           <Card
             title="Ventas"
             image="sale_illus"
+            localImg
             description="Le ayudamos a encontrar su vivienda y lo asesoramos en todo el proceso de compra"
           />
           <Card
             title="Alquileres"
             image="rent_illus"
+            localImg
             description="Tenemos un extenso listado de propiedades, y podemos ayudarte a encontrar lo que buscás"
           />
           <Card
             title="Tasaciones"
             image="assessment_illus"
+            localImg
             description="Tenemos un extenso listado de propiedades, y podemos ayudarte a encontrar lo que buscás"
           />
           <Card
             title="Asesoramiento"
             image="advice_illus"
+            localImg
             description="Le ayudamos a encontrar su vivienda y lo asesoramos en todo el proceso de compra"
           />
         </SimpleGrid>
