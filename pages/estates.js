@@ -22,6 +22,7 @@ export default function Estates({ estates }) {
       <Navbar />
       <Box maxW="5xl" margin="auto">
         <Title text="Propiedades" />
+        {/* TODO agregar filtro para seleccionar por Casas, Locales, etc... */}
         <SimpleGrid columns={[1, 2, 4, 4]} spacing={5} px={50}>
           {estates.map((estate) => {
             return (
