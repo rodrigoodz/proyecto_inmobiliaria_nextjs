@@ -1,4 +1,12 @@
-import { Box, Heading, Icon, Stack, Text, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Center,
+  Heading,
+  Icon,
+  Stack,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 import Image from "next/image";
 import { ImImage } from "react-icons/im";
 
@@ -40,15 +48,25 @@ const Card = ({
             alt={image}
           />
         ) : image === null ? (
-          <Icon as={ImImage} width={100} height={100} textAlign="center" />
+          <Center width={200} height={200}>
+            <Icon as={ImImage} width="80%" height="80%" textAlign="center" />
+          </Center>
         ) : (
-          <Image
-            src={image}
-            width={300}
-            height={300}
-            layout="intrinsic"
-            alt={image}
-          />
+          <Box width={200} height={200} position="relative">
+            <Image
+              src={image}
+              layout="fill"
+              objectFit="cover"
+              objectPosition="center"
+              className="estate_image"
+              alt={image}
+            />
+            <style jsx global>{`
+              .estate_image {
+                border-radius: 0.5rem;
+              }
+            `}</style>
+          </Box>
         )}
 
         <Text as="i">{description}</Text>

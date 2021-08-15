@@ -23,11 +23,12 @@ export default function Estates({ estates }) {
       <Box maxW="5xl" margin="auto">
         <Title text="Propiedades" />
         {/* TODO agregar filtro para seleccionar por Casas, Locales, etc... */}
-        <SimpleGrid columns={[1, 2, 4, 4]} spacing={5} px={50}>
+        <SimpleGrid columns={[1, 2, 3, 3]} spacing={5} px={50} pb={10}>
           {estates.map((estate) => {
             return (
               <Box onClick={() => handleSelected(estate)} key={estate.id}>
                 <Card
+                  title={estate.tipo.substr(0, estate.tipo.length - 1)}
                   price={estate.precio}
                   adress={estate.domicilio}
                   currency={estate.moneda}
