@@ -41,7 +41,9 @@ export default function Us() {
                 brindándole un asesoramiento integral y personalizado. Somos
                 personas responsables y te ayudaremos a tomar una bueno decision
                 en este proceso complejo e intenso. <Divider />
-                Melina Roncaglia ᴄᴏʀʀᴇᴅᴏʀᴀ ɪɴᴍᴏʙɪʟɪᴀʀɪᴀ ᴍᴀᴛʀɪᴄᴜʟᴀ 1366
+                <Text as="em" fontWeight="bold" color="gray.600">
+                  Melina Roncaglia | Corredora Inmobiliaria Matricula 1366
+                </Text>
               </Text>
               <Center>
                 <Image
