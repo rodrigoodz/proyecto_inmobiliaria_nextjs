@@ -14,7 +14,6 @@ import {
 import { ImWhatsapp } from "react-icons/im";
 
 const EstateModal = ({ isOpen, onClose, estate }) => {
-  console.log(estate);
   return (
     <Modal
       isOpen={isOpen}
