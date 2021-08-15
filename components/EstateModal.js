@@ -24,7 +24,11 @@ const EstateModal = ({ isOpen, onClose, estate }) => {
     >
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Propiedad Codigo: {estate.id}</ModalHeader>
+        <ModalHeader>
+          <Text fontSize="sm">
+            Tipo: {estate.tipo?.toLowerCase()} | Codigo: {estate.id}
+          </Text>
+        </ModalHeader>
         <ModalCloseButton />
         <ModalBody>
           <Text>qweqwwqewqewqe</Text>

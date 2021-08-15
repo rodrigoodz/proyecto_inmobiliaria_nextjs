@@ -40,7 +40,9 @@ export default function Estates({ estates }) {
           })}
         </SimpleGrid>
       </Box>
-      <EstateModal isOpen={isOpen} onClose={onClose} estate={selected} />
+      {selected && (
+        <EstateModal isOpen={isOpen} onClose={onClose} estate={selected} />
+      )}
     </Box>
   );
 }
