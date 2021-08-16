@@ -6,11 +6,18 @@ import {
   Button,
   Textarea,
   HStack,
+  Text,
   FormErrorMessage,
+  Icon,
+  Flex,
 } from "@chakra-ui/react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { ImCheckmark } from "react-icons/im";
 
 const Form = () => {
+  const [message, setMessage] = useState({ text: "", type: null });
+
   const {
     handleSubmit,
     register,
@@ -18,21 +25,30 @@ const Form = () => {
     formState: { errors, isSubmitting },
   } = useForm();
 
-  const onSubmit = (values) => {
-    fetch("/api/contact", {
+  const onSubmit = async (values) => {
+    const res = await fetch("/api/contact", {
       method: "POST",
       headers: {
         Accept: "application/json, text/plain, */*",
         "Content-Type": "application/json",
       },
       body: JSON.stringify(values),
-    }).then((res) => {
-      console.log("Response Received");
-      if (res.status === 200) {
-        reset();
-        console.log("Response Succeeded!");
-      }
     });
+
+    if (res.status === 200) {
+      reset();
+      setMessage({ text: "Mensaje enviado con exito", type: "check" });
+    } else {
+      setMessage();
+      setMessage({
+        text: "Hubo un error al enviar el mensaje. Intente más tarde",
+        type: "error",
+      });
+    }
+
+    setTimeout(() => {
+      setMessage({ text: "", type: null });
+    }, 3000);
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -92,6 +108,17 @@ const Form = () => {
         <Button colorScheme="purple" isLoading={isSubmitting} type="submit">
           Enviar
         </Button>
+        {message.text.length > 0 && (
+          <Flex
+            justifyContent="center"
+            alignItems="center"
+            color={message.type === "error" ? "red" : "green"}
+            fontSize="2xl"
+          >
+            <Text>{message.text}</Text>
+            <Icon as={ImCheckmark} ml={2} />
+          </Flex>
+        )}
       </Stack>
     </form>
   );
