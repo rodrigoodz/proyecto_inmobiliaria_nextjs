@@ -51,7 +51,7 @@ const Form = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={4}>
-        <HStack alignItems="flex-start">
+        <Stack alignItems="flex-start" direction={["column", "column", "row"]}>
           <FormControl isInvalid={errors.email}>
             <FormLabel htmlFor="email">Correo</FormLabel>
             <Input
@@ -78,7 +78,7 @@ const Form = () => {
               {errors.name && errors.name.message}
             </FormErrorMessage>
           </FormControl>
-        </HStack>
+        </Stack>
         <FormControl isInvalid={errors.subject}>
           <FormLabel htmlFor="subject">Asunto</FormLabel>
           <Input
