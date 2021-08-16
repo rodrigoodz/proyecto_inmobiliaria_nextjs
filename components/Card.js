@@ -69,7 +69,9 @@ const Card = ({
           </Box>
         )}
 
-        <Text as="i">{description}</Text>
+        <Text as="i" noOfLines={7}>
+          {description}
+        </Text>
       </VStack>
       <VStack alignSelf="flex-start" spacing={2} alignItems="flex-start">
         {adress !== null && (
