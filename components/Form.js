@@ -34,14 +34,14 @@ const Form = () => {
       },
       body: JSON.stringify(values),
     });
-    if (res.status === 200) {
+
+    const data = await res.json();
+
+    if (data.ok) {
       reset();
-      setMessage({ text: "Mensaje enviado con exito", type: "check" });
+      setMessage({ text: data.message, type: "check" });
     } else {
-      setMessage({
-        text: "Hubo un error al enviar el mensaje. Intente más tarde",
-        type: "error",
-      });
+      setMessage({ text: data.message, type: "error" });
     }
 
     setTimeout(() => {

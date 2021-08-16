@@ -1,15 +1,17 @@
 export default function (req, res) {
   let nodemailer = require("nodemailer");
-
   try {
     const transporter = nodemailer.createTransport({
-      port: 465,
-      host: "smtp.gmail.com",
+      port: 587,
+      host: "smtp-mail.outlook.com",
       auth: {
         user: process.env.EMAIL,
         pass: process.env.PASSWORD,
       },
-      secure: true,
+      secureConnection: false,
+      tls: {
+        ciphers: "SSLv3",
+      },
     });
 
     var mailData = {
@@ -21,25 +23,29 @@ export default function (req, res) {
           : req.body.subject,
       text: req.body.message,
       html: `<div>
-      <h2>Correo: ${req.body.email}</h2> 
-      <h2>Nombre: ${req.body.name}</h2> 
-      <h2>Mensaje</h2>
-      <h3>${req.body.message}</h3>
-      </div>`,
+        <h2>Correo: ${req.body.email}</h2> 
+        <h2>Nombre: ${req.body.name}</h2> 
+        <h2>Mensaje</h2>
+        <h3>${req.body.message}</h3>
+        </div>`,
     };
 
     transporter.sendMail(mailData, function (err) {
       if (err) {
-        // console.log(err);
-        res.status(500);
+        return res.status(500).json({
+          message: "Hubo un error al enviar el mensaje. Intente más tarde",
+          ok: false,
+        });
       } else {
-        // console.log(info);
-        res.status(200);
+        return res
+          .status(200)
+          .json({ message: "Mensaje enviado con exito", ok: true });
       }
     });
   } catch (error) {
-    res.status(500);
+    res.status(500).json({
+      message: "Hubo un error al enviar el mensaje. Intente más tarde",
+      ok: false,
+    });
   }
-
-  res.end();
 }
