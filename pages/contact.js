@@ -1,16 +1,13 @@
 import { Box, Text } from "@chakra-ui/react";
 import ContactInfo from "../components/ContactInfo";
-import Form from "../components/Form";
 import Navbar from "../components/Navbar";
 import Title from "../components/Title";
+import dynamic from "next/dynamic";
+
+const Form = dynamic(() => import("../components/Form"), { ssr: false });
 
 export default function Contact() {
-  // TODO forrmulario, Nombre (obligatorio), Email (obligatorio) <- "para ponernos en contacto", Telefono, asunto, Mensaje
-  // ver si podria agregar una comprobacion por captcha
-  //chakra-ui.com/docs/form/form-control
-  // https://chakra-templates.dev/forms/authentication
-  // https://medium.com/nerd-for-tech/coding-a-contact-form-with-next-js-and-nodemailer-d3a8dc6cd645
-  https: return (
+  return (
     <Box backgroundColor="primary" minHeight="100vh" textAlign="center">
       <ContactInfo />
       <Navbar />
