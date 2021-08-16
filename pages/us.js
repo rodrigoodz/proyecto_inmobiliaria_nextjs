@@ -19,7 +19,7 @@ export default function Us() {
       backgroundColor="primary"
       minHeight="100vh"
       textAlign="center"
-      // userSelect="none"
+      userSelect="none"
     >
       <ContactInfo />
       <Navbar />

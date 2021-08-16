@@ -9,7 +9,12 @@ import Head from "next/head";
 export default function Home() {
   const router = useRouter();
   return (
-    <Box backgroundColor="primary" minHeight="100vh" textAlign="center">
+    <Box
+      backgroundColor="primary"
+      minHeight="100vh"
+      textAlign="center"
+      userSelect="none"
+    >
       <Head>
         <title>Melina Roncaglia - Negocios Inmobiliarios</title>
         <meta
