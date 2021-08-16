@@ -13,7 +13,7 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { ImCheckmark } from "react-icons/im";
+import { ImCheckmark, ImCross } from "react-icons/im";
 
 const Form = () => {
   const [message, setMessage] = useState({ text: "", type: null });
@@ -34,12 +34,10 @@ const Form = () => {
       },
       body: JSON.stringify(values),
     });
-
     if (res.status === 200) {
       reset();
       setMessage({ text: "Mensaje enviado con exito", type: "check" });
     } else {
-      setMessage();
       setMessage({
         text: "Hubo un error al enviar el mensaje. Intente más tarde",
         type: "error",
@@ -108,7 +106,7 @@ const Form = () => {
         <Button colorScheme="purple" isLoading={isSubmitting} type="submit">
           Enviar
         </Button>
-        {message.text.length > 0 && (
+        {message.type !== null && (
           <Flex
             justifyContent="center"
             alignItems="center"
@@ -116,7 +114,10 @@ const Form = () => {
             fontSize="2xl"
           >
             <Text>{message.text}</Text>
-            <Icon as={ImCheckmark} ml={2} />
+            <Icon
+              as={message.type === "error" ? ImCross : ImCheckmark}
+              ml={2}
+            />
           </Flex>
         )}
       </Stack>
