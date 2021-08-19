@@ -1,10 +1,4 @@
-import {
-  Box,
-  SimpleGrid,
-  useDisclosure,
-  Select,
-  Heading,
-} from "@chakra-ui/react";
+import { Box, SimpleGrid, useDisclosure, Heading } from "@chakra-ui/react";
 import ContactInfo from "../components/ContactInfo";
 import Navbar from "../components/Navbar";
 import PublicGoogleSheetsParser from "public-google-sheets-parser";
@@ -12,6 +6,7 @@ import Title from "../components/Title";
 import Card from "../components/Card";
 import EstateModal from "../components/EstateModal";
 import { useState } from "react";
+import Selection from "../components/Selection";
 
 export default function Estates({ estates }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -45,23 +40,20 @@ export default function Estates({ estates }) {
       <Navbar />
       <Box maxW="5xl" margin="auto">
         <Title text="Propiedades" />
-        <Select
-          onChange={handleSelect}
-          variant="filled"
-          mb={4}
-          w={["xs", "sm", "xl", "2xl"]}
-          mx="auto"
-        >
-          <option value="">Todas</option>
-          <option value="CASAS">Casas</option>
-          <option value="COCHERAS">Cocheras</option>
-          <option value="DEPARTAMENTOS">Departamentos</option>
-          <option value="GALPONES">Galpones</option>
-          <option value="LOCALES">Locales</option>
-          <option value="QUINTAS">Quintas</option>
-          <option value="TERRENOS">Terrenos</option>
-          <option value="OTROS">Otros</option>
-        </Select>
+        <Selection
+          placeholder="Todas"
+          options={[
+            "Casas",
+            "Cocheras",
+            "Departamentos",
+            "Galpones",
+            "Locales",
+            "Quintas",
+            "Terrenos",
+            "Otros",
+          ]}
+          onSelect={handleSelect}
+        />
         {Boolean(filteredEstates.length > 0) ? (
           <SimpleGrid columns={[1, 2, 3, 3]} spacing={5} px={50} pb={10}>
             {filteredEstates.map((estate) => {
