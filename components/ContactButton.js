@@ -17,7 +17,7 @@ const ContactButton = ({ id, domicilio }) => {
     >
       <Button colorScheme="green">
         <Icon as={ImWhatsapp} />
-        <Text mt={1} ml={2} fontWeight="light">
+        <Text ml={2} fontWeight="light">
           Consulta esta propiedad por Whatsapp
         </Text>
       </Button>
