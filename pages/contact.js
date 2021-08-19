@@ -16,7 +16,7 @@ export default function Contact() {
     >
       <ContactInfo />
       <Navbar />
-      <Box maxW="5xl" margin="auto" p={5}>
+      <Box maxW="5xl" margin="auto">
         <Title text="Contactanos" />
         <Box px={50}>
           <Box bg="white" boxShadow="xl" rounded="md" h="full" p={6}>
