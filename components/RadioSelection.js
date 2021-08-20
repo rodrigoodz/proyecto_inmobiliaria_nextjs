@@ -1,4 +1,4 @@
-import { Box, Flex, Radio, RadioGroup, Stack, Text } from "@chakra-ui/react";
+import { Flex, Radio, RadioGroup, Text } from "@chakra-ui/react";
 import React from "react";
 
 const RadioSelection = ({ text = "", currentValue, values, onChange }) => {
