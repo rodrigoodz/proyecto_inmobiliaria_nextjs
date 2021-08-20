@@ -13,10 +13,10 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { ImCheckmark, ImCross } from "react-icons/im";
+import { useToast } from "@chakra-ui/react";
 
 const Form = () => {
-  const [message, setMessage] = useState({ text: "", type: null });
+  const toast = useToast();
 
   const {
     handleSubmit,
@@ -26,27 +26,46 @@ const Form = () => {
   } = useForm();
 
   const onSubmit = async (values) => {
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      headers: {
-        Accept: "application/json, text/plain, */*",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(values),
-    });
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          Accept: "application/json, text/plain, */*",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
 
-    const data = await res.json();
+      const data = await res.json();
 
-    if (data.ok) {
-      reset();
-      setMessage({ text: data.message, type: "check" });
-    } else {
-      setMessage({ text: data.message, type: "error" });
+      if (data.ok) {
+        reset();
+        toast({
+          title: "Enviado",
+          description: data.message,
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
+      } else {
+        toast({
+          title: "Error",
+          description: data.message,
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description:
+          "Hubo un error al procesar la solicitud. Intente más tarde",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
     }
-
-    setTimeout(() => {
-      setMessage({ text: "", type: null });
-    }, 3000);
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -106,20 +125,6 @@ const Form = () => {
         <Button colorScheme="purple" isLoading={isSubmitting} type="submit">
           Enviar
         </Button>
-        {message.type !== null && (
-          <Flex
-            justifyContent="center"
-            alignItems="center"
-            color={message.type === "error" ? "red" : "green"}
-            fontSize="2xl"
-          >
-            <Text>{message.text}</Text>
-            <Icon
-              as={message.type === "error" ? ImCross : ImCheckmark}
-              ml={2}
-            />
-          </Flex>
-        )}
       </Stack>
     </form>
   );
