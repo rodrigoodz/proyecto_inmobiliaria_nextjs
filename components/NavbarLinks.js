@@ -11,7 +11,7 @@ const NavbarLinks = () => {
       <NavbarItem text="Nosotros" to="/us" path={currentPath} />
       <NavbarItem text="Propiedades" to="/estates" path={currentPath} />
       <NavbarItem text="Contacto" to="/contact" path={currentPath} />
-      <NavbarItem text="Tasación" to="/assessment" path={currentPath} />
+      <NavbarItem text="Tasación" to="/appraisal" path={currentPath} />
     </>
   );
 };
