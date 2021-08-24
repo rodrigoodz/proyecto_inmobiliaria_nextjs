@@ -44,15 +44,18 @@ const AppraisalForm = () => {
   } = useForm();
 
   const onSubmit = async (values) => {
-    console.log(values);
+    const formData = new FormData();
+    formData.append("name", values.name);
+    formData.append("address", values.address);
+    formData.append("email", values.email);
+    for (let i = 0; i < values.files_.length; i++) {
+      formData.append(`file${i}`, values.files_[i]);
+    }
+
     try {
       const res = await fetch("/api/appraisal", {
         method: "POST",
-        headers: {
-          Accept: "application/json, text/plain, */*",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(values),
+        body: formData,
       });
 
       const data = await res.json();
@@ -88,9 +91,9 @@ const AppraisalForm = () => {
   };
 
   const validateFiles = (value) => {
-    // if (value.length < 1) {
-    //   return "Envie como mínimo una imagen";
-    // }
+    if (value.length > 5) {
+      return "Envie como máximo 5 imagenes";
+    }
     for (const file of Array.from(value)) {
       const fsMb = file.size / (1024 * 1024);
       const MAX_FILE_SIZE = 10;
@@ -194,16 +197,22 @@ const AppraisalForm = () => {
             {errors.address && errors.address.message}
           </FormErrorMessage>
         </FormControl>
-        <FormControl isInvalid={errors.file_}>
+        <FormControl
+          isInvalid={errors.files_}
+          display="flex"
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="center"
+        >
           <FileUpload
             accept={"image/*"}
             multiple
-            register={register("file_", { validate: validateFiles })}
+            register={register("files_", { validate: validateFiles })}
           >
             <Button leftIcon={<Icon as={ImImages} />}> Subir imagenes</Button>
           </FileUpload>
           <FormErrorMessage>
-            {errors.file_ && errors?.file_.message}
+            {errors.files_ && errors?.files_.message}
           </FormErrorMessage>
         </FormControl>
         <Button colorScheme="purple" isLoading={isSubmitting} type="submit">
