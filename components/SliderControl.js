@@ -20,8 +20,7 @@ const SliderControl = ({
     <Box>
       <Center>
         <Text>
-          Superficie: {currentValue}
-          <sup>2</sup>
+          Superficie: {currentValue} m<sup>2</sup>
         </Text>
       </Center>
       <Slider
