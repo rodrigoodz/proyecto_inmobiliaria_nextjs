@@ -1,15 +1,6 @@
-import {
-  Center,
-  Text,
-  IconButton,
-  Icon,
-  Input,
-  InputGroup,
-  InputLeftElement,
-  Button,
-} from "@chakra-ui/react";
+import { InputGroup } from "@chakra-ui/react";
 
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 
 const FileUpload = ({ register, accept, multiple, children }) => {
   const inputRef = useRef();

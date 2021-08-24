@@ -17,17 +17,6 @@ import { ImImages } from "react-icons/im";
 import RadioSelection from "./RadioSelection";
 import SliderControl from "./SliderControl";
 
-// Tipo de Propiedad (departamento,casa,PH)
-// Cant. ambientes (select de 1 a 5)
-// Superficie Cubierta en m^2 (chakra slider) de 30 a 500
-// Localidad (santa fe o entre rios) (Provincia)
-// que tipo de operacion? Alquiler / Venta
-// Direccion del inmueble
-// Nombre
-// Email
-// Telefono
-// Fotos
-
 const AppraisalForm = () => {
   const toast = useToast();
   const [location, setLocation] = useState("SANTA FE");
