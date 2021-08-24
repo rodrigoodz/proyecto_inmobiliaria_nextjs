@@ -7,9 +7,12 @@ import {
   FormErrorMessage,
   Flex,
   useToast,
+  Icon,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import FileUpload from "./FileUpload";
+import { ImImages } from "react-icons/im";
 
 import RadioSelection from "./RadioSelection";
 import SliderControl from "./SliderControl";
@@ -41,8 +44,9 @@ const AppraisalForm = () => {
   } = useForm();
 
   const onSubmit = async (values) => {
+    console.log(values);
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch("/api/appraisal", {
         method: "POST",
         headers: {
           Accept: "application/json, text/plain, */*",
@@ -81,6 +85,20 @@ const AppraisalForm = () => {
         isClosable: true,
       });
     }
+  };
+
+  const validateFiles = (value) => {
+    // if (value.length < 1) {
+    //   return "Envie como mínimo una imagen";
+    // }
+    for (const file of Array.from(value)) {
+      const fsMb = file.size / (1024 * 1024);
+      const MAX_FILE_SIZE = 10;
+      if (fsMb > MAX_FILE_SIZE) {
+        return "El tamaño maximo de cada archivo debe ser menor a 10Mb";
+      }
+    }
+    return true;
   };
 
   return (
@@ -176,7 +194,18 @@ const AppraisalForm = () => {
             {errors.address && errors.address.message}
           </FormErrorMessage>
         </FormControl>
-
+        <FormControl isInvalid={errors.file_}>
+          <FileUpload
+            accept={"image/*"}
+            multiple
+            register={register("file_", { validate: validateFiles })}
+          >
+            <Button leftIcon={<Icon as={ImImages} />}> Subir imagenes</Button>
+          </FileUpload>
+          <FormErrorMessage>
+            {errors.file_ && errors?.file_.message}
+          </FormErrorMessage>
+        </FormControl>
         <Button colorScheme="purple" isLoading={isSubmitting} type="submit">
           Enviar
         </Button>
