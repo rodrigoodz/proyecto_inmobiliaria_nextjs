@@ -11,8 +11,7 @@ const FileUpload = ({ register, accept, multiple, children }) => {
   return (
     <InputGroup
       onClick={handleClick}
-      display="flex"
-      justifyContent="center"
+      flexDirection={["column", "row"]}
       alignItems="center"
     >
       <input

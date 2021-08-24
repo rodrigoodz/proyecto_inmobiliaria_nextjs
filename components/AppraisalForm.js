@@ -7,6 +7,7 @@ import {
   FormErrorMessage,
   Flex,
   useToast,
+  Text,
   Icon,
 } from "@chakra-ui/react";
 import { useState } from "react";
@@ -28,6 +29,7 @@ const AppraisalForm = () => {
   const {
     handleSubmit,
     register,
+    watch,
     reset,
     formState: { errors, isSubmitting },
   } = useForm();
@@ -195,8 +197,6 @@ const AppraisalForm = () => {
         <FormControl
           isInvalid={errors.files_}
           display="flex"
-          flexDirection="column"
-          justifyContent="center"
           alignItems="center"
         >
           <FileUpload
@@ -205,7 +205,15 @@ const AppraisalForm = () => {
             register={register("files_", { validate: validateFiles })}
           >
             <Button leftIcon={<Icon as={ImImages} />}> Subir imagenes</Button>
+            {watch("files_")?.length ? (
+              <Text ml={2}>
+                {watch("files_").length} archivo/s seleccionado/s
+              </Text>
+            ) : (
+              <Text ml={2}>Ningun archivo seleccionado</Text>
+            )}
           </FileUpload>
+
           <FormErrorMessage>
             {errors.files_ && errors?.files_.message}
           </FormErrorMessage>
