@@ -34,7 +34,7 @@ const AppraisalForm = () => {
   const [type, setType] = useState("CASA");
   const [surface, setSurface] = useState(100);
   const [rooms, setRooms] = useState("1");
-  const [bathroom, setBathroom] = useState("1");
+  const [bathrooms, setBathrooms] = useState("1");
 
   const {
     handleSubmit,
@@ -48,6 +48,12 @@ const AppraisalForm = () => {
     formData.append("name", values.name);
     formData.append("address", values.address);
     formData.append("email", values.email);
+    formData.append("location", location);
+    formData.append("type", type);
+    formData.append("surface", surface);
+    formData.append("rooms", rooms);
+    formData.append("bathrooms", bathrooms);
+
     for (let i = 0; i < values.files_.length; i++) {
       formData.append(`file${i}`, values.files_[i]);
     }
@@ -146,9 +152,9 @@ const AppraisalForm = () => {
             />
             <RadioSelection
               text="Cant. de Baños"
-              currentValue={bathroom}
+              currentValue={bathrooms}
               values={["1", "2", "3", "4", "5"]}
-              onChange={(v) => setBathroom(v)}
+              onChange={(v) => setBathrooms(v)}
             />
           </Stack>
         </Flex>

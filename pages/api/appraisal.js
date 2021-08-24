@@ -7,6 +7,9 @@ export const config = {
   },
 };
 
+//TODO subir la imagen a cloudinary y mandar las imagenes directamente en el html del correo... esto porque vercel tiene un limite
+// de 5 Mb en las funciones serverless y con esa capacidad imposible que manden 4 fotos
+
 export default function (req, res) {
   const form = new formidable.IncomingForm();
   // form.uploadDir = "./public";
@@ -14,7 +17,8 @@ export default function (req, res) {
   form.parse(req, (err, fields, files) => {
     // console.log(err, fields, files);
 
-    const { email, name, address } = fields;
+    const { name, address, email, location, type, surface, rooms, bathrooms } =
+      fields;
     let filesToSend = [];
     filesToSend.push(files.file0 || null);
     filesToSend.push(files.file1 || null);
@@ -50,6 +54,11 @@ export default function (req, res) {
           <h2>Correo: ${email}</h2>
           <h2>Nombre: ${name}</h2>
           <h2>Direccion: ${address}</h2>
+          <h2>Provincia: ${location}</h2>
+          <h2>Tipo de Propiedad: ${type}</h2>
+          <h2>Superficie: ${surface}</h2>
+          <h2>Habitaciones: ${rooms}</h2>
+          <h2>Baños: ${bathrooms}</h2>
           <h2>Mensaje</h2>
           </div>`,
         attachments:
