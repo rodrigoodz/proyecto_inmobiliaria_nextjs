@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /*
+
+# TODO cambiar el sitemap si en algun momento cambio el dominio
+Sitemap: https://proyecto-inmobiliaria-nextjs.vercel.app/my-sitemap
