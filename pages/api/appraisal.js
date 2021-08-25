@@ -50,15 +50,14 @@ export default function (req, res) {
           subject: "Correo desde Melina Roncaglia | Negocios Inmobiliarios",
           text: "Necesito una tasacion",
           html: `<div>
-            <h2>Correo: ${email}</h2>
-            <h2>Nombre: ${name}</h2>
-            <h2>Direccion: ${address}</h2>
-            <h2>Provincia: ${location}</h2>
-            <h2>Tipo de Propiedad: ${type}</h2>
-            <h2>Superficie: ${surface}</h2>
-            <h2>Habitaciones: ${rooms}</h2>
-            <h2>Baños: ${bathrooms}</h2>
-            <h2>Mensaje</h2>
+            <b>Correo:</b> ${email}<br/>
+            <b>Nombre:</b> ${name}<br/>
+            <b>Direccion:</b> ${address}<br/>
+            <b>Provincia:</b> ${location}<br/>
+            <b>Tipo de Propiedad:</b> ${type}<br/>
+            <b>Superficie:</b> ${surface}m<sup>2</sup><br/>
+            <b>Habitaciones:</b> ${rooms}<br/>
+            <b>Baños:</b> ${bathrooms}<br/>
             </div>`,
           attachments:
             urls.length > 0

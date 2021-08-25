@@ -23,10 +23,9 @@ export default function (req, res) {
           : req.body.subject,
       text: req.body.message,
       html: `<div>
-        <h2>Correo: ${req.body.email}</h2> 
-        <h2>Nombre: ${req.body.name}</h2> 
-        <h2>Mensaje</h2>
-        <h3>${req.body.message}</h3>
+        <b>Correo:</b>  ${req.body.email}<br />
+        <b>Nombre:</b>  ${req.body.name}<br />
+        <p>${req.body.message}</p>
         </div>`,
     };
 
