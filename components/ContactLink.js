@@ -11,6 +11,7 @@ const ContactLink = ({ to, icon, text }) => {
         textDecoration: "none",
         color: "gray.300",
       }}
+      py={0.5}
     >
       <Icon as={icon} />
       <Text ml={1}>{text}</Text>
