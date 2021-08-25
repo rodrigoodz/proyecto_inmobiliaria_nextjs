@@ -11,6 +11,7 @@ import Navbar from "../components/Navbar";
 import Title from "../components/Title";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 export default function Us() {
   const router = useRouter();
@@ -21,6 +22,23 @@ export default function Us() {
       textAlign="center"
       userSelect="none"
     >
+      <Head>
+        <title>Nosotros - Melina Roncaglia | Negocios Inmobiliarios</title>
+        <meta
+          name="description"
+          content="Le ayudamos a encontrar su vivienda, ya sea para alquiler o compra, contamos con un extenso listado de propiedades y podemos ayudarte a encontrar lo que buscas."
+        />
+        <meta
+          property="og:title"
+          content="Nosotros - Melina Roncaglia | Negocios Inmobiliarios"
+        />
+        <meta
+          property="og:description"
+          content="Le ayudamos a encontrar su vivienda, ya sea para alquiler o compra, contamos con un extenso listado de propiedades y podemos ayudarte a encontrar lo que buscas."
+        />
+        {/* <meta property="og:url" content="" /> */}
+        <meta property="og:type" content="website" />
+      </Head>
       <ContactInfo />
       <Navbar />
       <Box maxW="5xl" margin="auto">

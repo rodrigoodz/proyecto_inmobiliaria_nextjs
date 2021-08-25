@@ -16,7 +16,7 @@ export default function Home() {
       userSelect="none"
     >
       <Head>
-        <title>Melina Roncaglia - Negocios Inmobiliarios</title>
+        <title>Melina Roncaglia | Negocios Inmobiliarios</title>
         <meta
           name="description"
           content="Somos una empresa consolidada en el mercado inmobiliario de Entre Rios y Santa Fe. Nuestro principal objetivo es acercarles a nuestros clientes las mejores oportunidades de inversión, brindándole un asesoramiento integral y personalizado."

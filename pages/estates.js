@@ -7,6 +7,7 @@ import Card from "../components/Card";
 import EstateModal from "../components/EstateModal";
 import { useState } from "react";
 import Selection from "../components/Selection";
+import Head from "next/head";
 
 export default function Estates({ estates }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -36,6 +37,23 @@ export default function Estates({ estates }) {
       textAlign="center"
       userSelect="none"
     >
+      <Head>
+        <title>Propiedades - Melina Roncaglia | Negocios Inmobiliarios</title>
+        <meta
+          name="description"
+          content="Listado de propiedades para compra o alquiler"
+        />
+        <meta
+          property="og:title"
+          content="Propiedades - Melina Roncaglia | Negocios Inmobiliarios"
+        />
+        <meta
+          property="og:description"
+          content="Listado de propiedades para compra o alquiler"
+        />
+        {/* <meta property="og:url" content="" /> */}
+        <meta property="og:type" content="website" />
+      </Head>
       <ContactInfo />
       <Navbar />
       <Box maxW="5xl" margin="auto">
