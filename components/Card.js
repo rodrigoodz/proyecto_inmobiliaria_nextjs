@@ -46,6 +46,7 @@ const Card = ({
             height={300}
             layout="intrinsic"
             alt={image}
+            priority
           />
         ) : image === null ? (
           <Center width={200} height={200}>
