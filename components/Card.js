@@ -1,7 +1,9 @@
 import {
   Box,
   Center,
+  Flex,
   Heading,
+  HStack,
   Icon,
   Stack,
   Text,
@@ -74,16 +76,32 @@ const Card = ({
           {description}
         </Text>
       </VStack>
-      <VStack alignSelf="flex-start" spacing={2} alignItems="flex-start">
+
+      <VStack
+        alignItems="flex-start"
+        spacing={2}
+        alignItems="flex-start"
+        w="full"
+      >
         {adress !== null && (
           <Heading as="h2" size="xs" color="gray.400">
             {adress}
           </Heading>
         )}
         {price !== null && (
-          <Heading as="h2" size="xs">
-            {`${currency} ${price}`.trim()}
-          </Heading>
+          <Flex align="center" justify="space-between" w="full">
+            <Heading as="h2" size="xs">
+              {`${currency} ${price}`.trim()}
+            </Heading>
+            <Text
+              color="gray.400"
+              _hover={{
+                color: "gray.700",
+              }}
+            >
+              Click aquí
+            </Text>
+          </Flex>
         )}
       </VStack>
     </Stack>
