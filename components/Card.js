@@ -73,7 +73,7 @@ const Card = ({
           </Box>
         )}
 
-        <Text as="i" noOfLines={7}>
+        <Text as="i" noOfLines={7} textAlign={localImg ? "center" : "justify"}>
           {description}
         </Text>
       </VStack>
