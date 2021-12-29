@@ -8,9 +8,10 @@ import {
   ModalCloseButton,
   Text,
   Button,
-  Box,
-  Flex,
   SimpleGrid,
+  VStack,
+  Flex,
+  Box,
 } from "@chakra-ui/react";
 import ContactButton from "./ContactButton";
 import Image from "next/image";
@@ -29,22 +30,22 @@ const EstateModal = ({ isOpen, onClose, estate }) => {
         </ModalHeader>
         <ModalCloseButton />
         <ModalBody backgroundColor="primary">
-          <SimpleGrid columns={[1, 1, 2, 3]} spacing={4}>
-            {images.map(
-              (image, idx) =>
-                image !== undefined &&
-                image !== "null" && (
-                  <Image
-                    key={idx}
-                    src={image}
-                    width={500}
-                    height={500}
-                    alt={image}
-                  />
-                )
-            )}
+          <SimpleGrid columns={[1, 1, 2, 2]} height="3xl">
+            <VStack spacing="1" overflowY={["visible", "scroll"]}>
+              {images.map(
+                (image, idx) =>
+                  image !== undefined &&
+                  image !== "null" && (
+                    <Box key={idx}>
+                      <Image src={image} width={500} height={500} alt={image} />
+                    </Box>
+                  )
+              )}
+            </VStack>
+            <VStack>
+              <Text>{estate.descripcion}</Text>
+            </VStack>
           </SimpleGrid>
-          <Text>{estate.descripcion}</Text>
           <ContactButton id={estate.id} domicilio={estate.domicilio} />
         </ModalBody>
 

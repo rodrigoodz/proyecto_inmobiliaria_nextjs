@@ -84,6 +84,7 @@ export default function Estates({ estates }) {
                     currency={estate.moneda}
                     image={estate.img1 === "null" ? null : estate.img1}
                     description={estate.descripcion}
+                    location={estate.provincia}
                   />
                 </Box>
               );

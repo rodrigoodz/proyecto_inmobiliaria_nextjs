@@ -19,6 +19,7 @@ const Card = ({
   price = null,
   currency = "",
   adress = null,
+  location = "",
 }) => {
   return (
     <Stack
