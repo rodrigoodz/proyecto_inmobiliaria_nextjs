@@ -54,7 +54,6 @@ export default function Home() {
             image="assessment_illus"
             localImg
             description="Estimamos el precio de su inmueble en base a ciertos criterios con el fin de otorgarle un precio justo"
-            // description="Conozca el valor de su inmueble al instante teniendo en cuenta todos los criterios para la valoracion de un inmueble"
           />
           <Card
             title="Asesoramiento"
