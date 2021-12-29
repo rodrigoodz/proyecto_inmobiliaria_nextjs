@@ -78,12 +78,7 @@ const Card = ({
         </Text>
       </VStack>
 
-      <VStack
-        alignItems="flex-start"
-        spacing={2}
-        alignItems="flex-start"
-        w="full"
-      >
+      <VStack alignItems="flex-start" spacing={2} w="full">
         {adress !== null && (
           <Heading as="h2" size="xs" color="gray.400">
             {adress}
