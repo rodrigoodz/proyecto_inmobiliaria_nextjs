@@ -7,16 +7,16 @@ const ContactInfo = () => {
     <Flex bg="secondary" justify="flex-end" color="white" px={4} fontSize="sm">
       <Wrap>
         <ContactLink
-          to={`https://api.whatsapp.com/send?phone=543456450230&text=${encodeURIComponent(
+          to={`https://api.whatsapp.com/send?phone=543456000000&text=${encodeURIComponent(
             "Hola Melina, me gustaría contactarme con vos."
           )}`}
           icon={ImWhatsapp}
-          text="(3456) 6450230"
+          text="(3456) 000000"
         />
         <ContactLink
-          to={`https://www.instagram.com/roncaglianegociosinmobiliarios/`}
+          to={`https://www.instagram.com/loremipsum/`}
           icon={ImInstagram}
-          text="@roncaglianegociosinmobiliarios"
+          text="@loremipsum"
         />
       </Wrap>
     </Flex>
